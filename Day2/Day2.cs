@@ -14,11 +14,6 @@ namespace Day2
         Green,
         Blue
     }
-    class Cube
-    {
-        public Colour Colour { get; set; }
-        public Cube(Colour colour) { Colour = colour;}
-    }
     class Set
     {
         int _red;
@@ -67,22 +62,7 @@ namespace Day2
                 }
             }
         }
-        public void Add(Cube cube)
-        {
-            switch (cube.Colour)
-            {
-                case Colour.Red:
-                    this._red += 1;
-                    break;
-                case Colour.Green:
-                    this._green += 1;
-                    break;
-                case Colour.Blue:
-                    this._blue += 1;
-                    break;
-            }
-        }
-
+        
         public Boolean Possible(Set constraint)
         {
             if (this.Red > constraint.Red) { return false; }
