@@ -4,7 +4,7 @@ using Day2;
 
 using (var file = File.OpenText("input.txt"))
 {
-    List<Game> games = new List<Game>();
+    List<Game> games = [];
     
     string? line;
     while ((line = file.ReadLine()) != null)
@@ -12,7 +12,7 @@ using (var file = File.OpenText("input.txt"))
         games.Add(new Game(line));
     }
 
-    Set constraint = new Set(12, 13, 14);
+    Set constraint = new(12, 13, 14);
     int result = 0;
     int result2 = 0;
 

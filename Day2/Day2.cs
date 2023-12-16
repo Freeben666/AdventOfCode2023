@@ -16,9 +16,9 @@ namespace Day2
     }
     class Set
     {
-        int _red;
-        int _green;
-        int _blue;
+        readonly int _red;
+        readonly int _green;
+        readonly int _blue;
         public int Red => _red;
         public int Green => _green;
         public int Blue => _blue;
@@ -42,13 +42,12 @@ namespace Day2
                 var trimmed = s.Trim();
                 var infos = trimmed.Split(" ");
 
-                int quantity;
-                if(!int.TryParse(infos[0], out quantity))
+                if (!int.TryParse(infos[0], out int quantity))
                 {
                     throw new Exception("Could not parse quantity in " + trimmed);
                 }
 
-                switch(infos[1])
+                switch (infos[1])
                 {
                     case "red":
                         _red += quantity;
@@ -73,8 +72,8 @@ namespace Day2
     }
     internal class Game
     {
-        int _ID;
-        List<Set> _sets;
+        readonly int _ID;
+        readonly List<Set> _sets;
 
         public int ID => _ID;
         public int MaxRed => _sets.Max(t => t.Red);
@@ -86,7 +85,7 @@ namespace Day2
         public Game()
         {
             _ID = 0;
-            _sets = new List<Set>();
+            _sets = [];
         }
         public Game(String gameString) : this()
         {
