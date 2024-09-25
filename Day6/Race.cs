@@ -10,19 +10,21 @@ namespace Day6
     {
         internal static int Count = 0;
 
-        int _ID = Race.Count++;
-        long _time = t; // Duration of the race
-        long _record = r; // Record distance on that race
+        readonly int _ID = Race.Count++;
+        readonly long _time = t; // Duration of the race
+        readonly long _record = r; // Record distance on that race
 
         public double Discriminant => Math.Pow(_time, 2) - 4 * _record;
         public Boolean HasSolutions => Discriminant >= 0;
         public (double?, double?) Solutions => HasSolutions ? ((_time - Math.Sqrt(this.Discriminant)) / 2.0, (_time + Math.Sqrt(this.Discriminant)) / 2.0) : (null, null);
+#pragma warning disable CS8629 // Le type valeur Nullable peut avoir une valeur null.
         double? MinSolution => HasSolutions ? Math.Min((double)Solutions.Item1, (double)Solutions.Item2) : null;
         double? MaxSolution => HasSolutions ? Math.Max((double)Solutions.Item1, (double)Solutions.Item2) : null;
 
         long? MinToBeatRecord => HasSolutions ? (long)Math.Ceiling((double)MinSolution) : null;
         long? MaxToBeatRecord => HasSolutions ? (long)Math.Floor((double)MaxSolution) : null;
         public long NumberOfWays => HasSolutions ? (long)MaxToBeatRecord - (long)MinToBeatRecord + 1 : 0;
+#pragma warning restore CS8629 // Le type valeur Nullable peut avoir une valeur null.
 
         public long? Distance(long pushTime)
         {
